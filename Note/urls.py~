@@ -5,5 +5,8 @@ from .views import NoteViewSet
 
 router = DefaultRouter()
 router.register(r'notes', NoteViewSet)
+router.register(r'users', UserViewSet)
+urlpatterns = router.urls
 
-urlpatterns = route.urls
+
+
