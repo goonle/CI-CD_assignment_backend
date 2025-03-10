@@ -15,12 +15,12 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = UserSerializer
 
 
-# class LoginView(ObtainAuthToken):
-#     def post(self, request, *args, **kwargs):
-#         response = super(LoginView, self).post(request, *args, **kwargs)
-#         token = Token.objects.get(key=response.data['token'])
-#         return Response({'token': token.key, 'user_id': token.user_id})
-#
+class LoginView(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        response = super(LoginView, self).post(request, *args, **kwargs)
+        token = Token.objects.get(key=response.data['token'])
+        return Response({'token': token.key, 'user_id': token.user_id})
+
 # class LogoutView(APIView, IsAuthenticated):
 #
 #     def post(self, request):
