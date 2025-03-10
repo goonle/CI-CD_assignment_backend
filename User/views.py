@@ -9,12 +9,11 @@ from rest_framework.views import APIView
 from .serializers import UserSerializer
 
 
-
-
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = (AllowAny,)
     serializer_class = UserSerializer
+
 
 class LoginView(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
