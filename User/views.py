@@ -21,8 +21,9 @@ class LoginView(ObtainAuthToken):
         token = Token.objects.get(key=response.data['token'])
         return Response({'token': token.key, 'user_id': token.user_id})
 
-# class LogoutView(APIView, IsAuthenticated):
-#
-#     def post(self, request):
-#         request.user.auth_token.delete()
-#         return Response(status=204)
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]  # Ensure only authenticated users can log out
+
+    def post(self, request):
+        request.user.auth_token.delete()  # Deletes the user's auth token
+        return Response({"message": "Successfully logged out"}, status=204)  # No content response
