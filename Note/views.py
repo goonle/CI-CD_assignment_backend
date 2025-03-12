@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated
 
 from Note.models import Note
@@ -10,5 +10,9 @@ from Note.serializers import NoteSerializer
 class NoteViewSet(viewsets.ModelViewSet):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
+class NoteCreateView(generics.CreateAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteSerializer
+    permission_classes = [IsAuthenticated]
