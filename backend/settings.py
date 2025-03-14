@@ -150,7 +150,7 @@ CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins (for development)
 # OR restrict to specific domains
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Example frontend
-    "https://your-frontend-domain.com",
+    "https://ci-cd-assignment-frontend.vercel.app/",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
