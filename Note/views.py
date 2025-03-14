@@ -15,7 +15,7 @@ class NoteViewSet(viewsets.ModelViewSet):
     serializer_class = NoteSerializer
     permission_classes = [IsAuthenticated]
 
-class NoteCreateView(APIView):
+class NoteViewManual(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
 
@@ -30,8 +30,18 @@ class NoteCreateView(APIView):
         note = Note.objects.create(user=user, title=title, content=content)
         return Response({"message": "Note created successfully", "note_id": note.id}, status=status.HTTP_201_CREATED)
 
+    def put(self, request):
+        note = Note.objects.get(id=request.data.get("note_id"))
+        note.title = request.data.get('title', note.title)
+        note.content = request.data.get('content', note.content)
+        note.save()
 
-class NoteListView(generics.ListAPIView):
-    queryset = Note.objects.all()
-    serializer_class = NoteSerializer
-    permission_classes = [IsAuthenticated]
+        return Response({"message": "Note updated successfully"}, status=status.HTTP_200_OK)
+
+    def get(self, request):
+        notes = Note.objects.filter(user=request.user)  # Get only the user's notes
+        serializer = NoteSerializer(notes, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
