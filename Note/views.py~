@@ -47,7 +47,7 @@ class NoteViewManual(APIView):
     def delete(self, request):
         note = Note.objects.get(id=request.data.get("note_id"))
         note.delete()
-
+        
         return Response({"message": "Note deleted successfully"}, status=status.HTTP_200_OK)
 
 
