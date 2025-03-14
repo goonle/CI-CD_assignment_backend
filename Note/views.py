@@ -43,5 +43,9 @@ class NoteViewManual(APIView):
         serializer = NoteSerializer(notes, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+    def delete(self, request):
+        note = Note.objects.get(id=request.data.get("note_id"))
+        note.delete()
+        return Response({"message": "Note deleted successfully"}, status=status.HTTP_200_OK)
 
 
