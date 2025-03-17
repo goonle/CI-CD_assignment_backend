@@ -153,6 +153,7 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React (local)
     "https://ci-cd-assignment-frontend.vercel.app",  # Production frontend
+    "https://ci-cd-assignment-backend-git-24-b-eeb071-junhyung-huhs-projects.vercel.app",
 ]
 # Allow credentials (important if using authentication)
 CORS_ALLOW_CREDENTIALS = True
