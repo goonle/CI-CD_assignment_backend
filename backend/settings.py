@@ -172,3 +172,4 @@ CORS_ALLOW_HEADERS = [
     "authorization",
     "content-type",
 ]
+CORS_ALLOW_ALL_ORIGINS = True
