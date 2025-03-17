@@ -1,0 +1,12 @@
+from django.test import TestCase
+
+import User
+
+
+class LoginTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+
+    def test_login(self):
+        response = self.client.post('/api/login/', {'username': 'testuser', 'password': 'testpass'})
+        self.assertEqual(response.status_code, 200)
