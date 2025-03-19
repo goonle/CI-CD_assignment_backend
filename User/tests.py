@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-import User
+from django.contrib.auth.models import User
 
 
 class LoginTest(TestCase):
@@ -34,3 +34,6 @@ class LoginTest(TestCase):
 
         response = self.client.post('/user/login/', {'username': 'wronguser', 'password': ''})
         self.assertEqual(response.status_code, 400)
+
+    # def test_sum(self):
+    #     self.assertEqual(1 + 1, 2)
