@@ -35,5 +35,5 @@ class LoginTest(TestCase):
         response = self.client.post('/user/login/', {'username': 'wronguser', 'password': ''})
         self.assertEqual(response.status_code, 400)
 
-    def test_sum(self):
-        self.assertEqual(1 + 1, 2)
+    # def test_sum(self):
+    #     self.assertEqual(1 + 1, 2)
